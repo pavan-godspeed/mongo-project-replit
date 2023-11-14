@@ -1,0 +1,5 @@
+summary: Fetch many OrderItem
+tasks:
+  - id: mongo_orderitem_search
+    fn: datasource.mongo.OrderItem.findMany
+    args: {}

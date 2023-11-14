@@ -1,0 +1,88 @@
+# ONE
+http.get./mongo/orderitem/{id}:
+  summary: Fetch OrderItem
+  description: Fetch OrderItem from database
+  fn: com.biz.mongo.orderitem.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+http.post./mongo/orderitem:
+  summary: Create a new OrderItem
+  description: Create OrderItem from database
+  fn: com.biz.mongo.orderitem.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mongo/OrderItem'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+http.put./mongo/orderitem/{id}:
+  summary: Update a OrderItem
+  description: Update OrderItem from database
+  fn: com.biz.mongo.orderitem.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mongo/OrderItem'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+http.delete./mongo/orderitem/{id}:
+  summary: Delete a OrderItem
+  description: Delete OrderItem from database
+  fn: com.biz.mongo.orderitem.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+http.post./mongo/orderitem/search:
+  summary: Fetch multiple OrderItem
+  description: Fetch multiple OrderItem from database
+  fn: com.biz.mongo.orderitem.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

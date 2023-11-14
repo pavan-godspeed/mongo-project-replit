@@ -1,0 +1,7 @@
+summary: Fetch Category
+tasks:
+  - id: mongo_category_one
+    fn: datasource.mongo.Category.findUnique
+    args:
+      where:
+        id: <% inputs.params.id %>

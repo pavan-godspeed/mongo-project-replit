@@ -1,0 +1,7 @@
+summary: Delete Restaurant
+tasks:
+  - id: mongo_restaurant_delete
+    fn: datasource.mongo.Restaurant.delete
+    args:
+      where:
+        id: <% inputs.params.id %>

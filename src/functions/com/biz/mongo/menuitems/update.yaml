@@ -1,0 +1,8 @@
+summary: Update MenuItems
+tasks:
+  - id: mongo_menuitems_update
+    fn: datasource.mongo.MenuItems.update
+    args:
+      where:
+        id: <% inputs.params.id %>
+      data: <% inputs.body %>

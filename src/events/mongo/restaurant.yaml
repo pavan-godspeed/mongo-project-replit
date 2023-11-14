@@ -1,0 +1,116 @@
+# ONE
+http.get./mongo/restaurant/{id}:
+  summary: Fetch Restaurant
+  description: Fetch Restaurant from database
+  fn: com.biz.mongo.restaurant.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+http.post./mongo/restaurant:
+  summary: Create a new Restaurant
+  description: Create Restaurant from database
+  fn: create
+  body:
+    content:
+      application/json:
+        schema:
+          type: object 
+          properties:
+            createdAt:
+              type: string
+              format: date-time
+            name:
+              type: string
+            since:
+              type: string
+              format: date-time
+            isOpen:
+              type: boolean
+              default: false
+            opsStartTime:
+              type: string
+              format: date-time
+            opsEndTime:
+              type: string
+              format: date-time
+            ownerId:
+              type: string
+              nullable: true
+            slug:
+              type: string
+            description:
+              type: string
+              nullable: true
+            location:
+              type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+http.put./mongo/restaurant/{id}:
+  summary: Update a Restaurant
+  description: Update Restaurant from database
+  fn: com.biz.mongo.restaurant.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mongo/Restaurant'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+http.delete./mongo/restaurant/{id}:
+  summary: Delete a Restaurant
+  description: Delete Restaurant from database
+  fn: com.biz.mongo.restaurant.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+http.post./mongo/restaurant/search:
+  summary: Fetch multiple Restaurant
+  description: Fetch multiple Restaurant from database
+  fn: com.biz.mongo.restaurant.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

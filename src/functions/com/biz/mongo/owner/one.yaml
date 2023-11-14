@@ -1,0 +1,7 @@
+summary: Fetch Owner
+tasks:
+  - id: mongo_owner_one
+    fn: datasource.mongo.Owner.findUnique
+    args:
+      where:
+        id: <% inputs.params.id %>

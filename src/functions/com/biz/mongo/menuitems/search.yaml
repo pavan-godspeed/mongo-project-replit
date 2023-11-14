@@ -1,0 +1,5 @@
+summary: Fetch many MenuItems
+tasks:
+  - id: mongo_menuitems_search
+    fn: datasource.mongo.MenuItems.findMany
+    args: {}

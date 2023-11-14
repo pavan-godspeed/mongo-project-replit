@@ -1,0 +1,88 @@
+# ONE
+http.get./mongo/order/{id}:
+  summary: Fetch Order
+  description: Fetch Order from database
+  fn: com.biz.mongo.order.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+http.post./mongo/order:
+  summary: Create a new Order
+  description: Create Order from database
+  fn: com.biz.mongo.order.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mongo/Order'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+http.put./mongo/order/{id}:
+  summary: Update a Order
+  description: Update Order from database
+  fn: com.biz.mongo.order.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mongo/Order'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+http.delete./mongo/order/{id}:
+  summary: Delete a Order
+  description: Delete Order from database
+  fn: com.biz.mongo.order.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+http.post./mongo/order/search:
+  summary: Fetch multiple Order
+  description: Fetch multiple Order from database
+  fn: com.biz.mongo.order.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

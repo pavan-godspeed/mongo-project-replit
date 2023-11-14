@@ -1,0 +1,6 @@
+summary: Create MenuItems
+tasks:
+  - id: mongo_menuitems_create
+    fn: datasource.mongo.MenuItems.create
+    args:
+      data: <% inputs.body %>

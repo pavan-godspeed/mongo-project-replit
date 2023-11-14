@@ -1,0 +1,88 @@
+# ONE
+http.get./mongo/owner/{id}:
+  summary: Fetch Owner
+  description: Fetch Owner from database
+  fn: com.biz.mongo.owner.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+http.post./mongo/owner:
+  summary: Create a new Owner
+  description: Create Owner from database
+  fn: com.biz.mongo.owner.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mongo/Owner'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+http.put./mongo/owner/{id}:
+  summary: Update a Owner
+  description: Update Owner from database
+  fn: com.biz.mongo.owner.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mongo/Owner'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+http.delete./mongo/owner/{id}:
+  summary: Delete a Owner
+  description: Delete Owner from database
+  fn: com.biz.mongo.owner.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+http.post./mongo/owner/search:
+  summary: Fetch multiple Owner
+  description: Fetch multiple Owner from database
+  fn: com.biz.mongo.owner.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

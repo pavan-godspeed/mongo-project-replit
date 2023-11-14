@@ -1,0 +1,6 @@
+summary: Create Restaurant
+tasks:
+  - id: mongo_restaurant_create
+    fn: datasource.mongo.Restaurant.create
+    args:
+      data: <% inputs.body %>

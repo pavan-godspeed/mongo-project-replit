@@ -1,0 +1,6 @@
+summary: Create Category
+tasks:
+  - id: mongo_category_create
+    fn: datasource.mongo.Category.create
+    args:
+      data: <% inputs.body %>

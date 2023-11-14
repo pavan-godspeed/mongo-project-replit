@@ -1,0 +1,7 @@
+summary: Delete Owner
+tasks:
+  - id: mongo_owner_delete
+    fn: datasource.mongo.Owner.delete
+    args:
+      where:
+        id: <% inputs.params.id %>

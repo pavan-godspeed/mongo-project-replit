@@ -1,0 +1,139 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URL")
+}
+
+model Owner {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  email   String   @unique
+  name    String?
+}
+
+model Restaurant {
+  id         String        @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt  DateTime      @default(now())
+  name       String
+  since      DateTime
+  isOpen     Boolean        @default(false)
+  opsStartTime DateTime
+  opsEndTime   DateTime
+  ownerId    String?
+  slug       String        @unique
+  description String?
+  location   String
+  menuItems  MenuItems[]
+}
+
+model Category {
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
+  name  String
+}
+
+model MenuItems {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String?
+  price       Int
+  couponCode  String[]
+  restaurant  Restaurant @relation(fields: [restaurantId], references: id)
+  restaurantId  String @db.ObjectId
+}
+
+model Order {
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  fromRestaurant String
+  orderStatus   OrderStatus @default(NOT_INITIATED)
+  placedAt      DateTime?
+  fulfilledAt   DateTime?
+  orderItems    OrderItem[]
+}
+
+model OrderItem {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  menuItemId  String
+  quantity    Int
+  order      Order @relation(fields: [orderId], references: id)
+  orderId    String @db.ObjectId
+}
+
+enum OrderStatus {
+  INITIATED
+  NOT_INITIATED
+  WAITING_FOR_APPROVAL_FROM_RESTAURANT
+  WAITING_FOR_DELIVERY_PARTNER
+  PLACED
+  PICKUP_BY_DELIVERY_PARTNER
+  DELIVERED
+  READY_TO_PICKUP
+}
+
+
+// sql schema
+
+// model Owner {
+//   id      Int      @id @default(autoincrement())
+//   email   String   @unique
+//   name    String?
+// }
+
+// model Restaurant {
+//   id         Int        @id @default(autoincrement())
+//   createdAt  DateTime   @default(now())
+//   name      String
+//   since  DateTime
+//   isOpen  Boolean    @default(false)
+//   opsStartTime DateTime
+//   opsEndTime DateTime
+//   ownerId   Int?
+//   slug     String    @unique
+//   description String?
+//   location String
+//   menuItems MenuItems[]
+// }
+
+// model Category {
+//   id    Int    @id @default(autoincrement())
+//   name  String
+// }
+
+// model MenuItems {
+//   id  Int @id @default(autoincrement())
+//   name String
+//   description String?
+//   price Int
+//   couponCode String[]
+//   restaurant Restaurant @relation(fields: [restaurantId], references: id)
+//   restaurantId  Int
+// }
+
+// model Order {
+//   id Int @id @default(autoincrement())
+//   frmoRestaurant Int
+//   orderStatus OrderStatus @default(NOT_INITIATED)
+//   placedAt DateTime?
+//   fulfilledAt DateTime?
+//   orderItems OrderItem[]
+// }
+
+// model OrderItem {
+//   id Int @id @default(autoincrement())
+//   menuItemId Int
+//   quantity Int
+//   order Order @relation(fields: [orderId], references: id)
+//   orderId Int
+// }
+
+// enum OrderStatus {
+//   INITIATED
+//   NOT_INITIATED
+//   WAITING_FOR_APPROVAL_FROM_RESTAURANT
+//   WAITING_FOR_DELIVERY_PARTNER
+//   PLACED
+//   PICKUP_BY_DELIVERY_PARTNER
+//   DELIVERED
+//   READY_TO_PICKUP
+// }

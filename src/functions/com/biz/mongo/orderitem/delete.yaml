@@ -1,0 +1,7 @@
+summary: Delete OrderItem
+tasks:
+  - id: mongo_orderitem_delete
+    fn: datasource.mongo.OrderItem.delete
+    args:
+      where:
+        id: <% inputs.params.id %>

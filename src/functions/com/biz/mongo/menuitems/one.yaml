@@ -1,0 +1,7 @@
+summary: Fetch MenuItems
+tasks:
+  - id: mongo_menuitems_one
+    fn: datasource.mongo.MenuItems.findUnique
+    args:
+      where:
+        id: <% inputs.params.id %>

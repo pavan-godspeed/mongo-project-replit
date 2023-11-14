@@ -1,0 +1,7 @@
+summary: Fetch Restaurant
+tasks:
+  - id: mongo_restaurant_one
+    fn: datasource.mongo.Restaurant.findUnique
+    args:
+      where:
+        id: <% inputs.params.id %>

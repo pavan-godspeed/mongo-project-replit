@@ -1,0 +1,7 @@
+summary: Delete Category
+tasks:
+  - id: mongo_category_delete
+    fn: datasource.mongo.Category.delete
+    args:
+      where:
+        id: <% inputs.params.id %>

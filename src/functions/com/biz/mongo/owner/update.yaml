@@ -1,0 +1,8 @@
+summary: Update Owner
+tasks:
+  - id: mongo_owner_update
+    fn: datasource.mongo.Owner.update
+    args:
+      where:
+        id: <% inputs.params.id %>
+      data: <% inputs.body %>

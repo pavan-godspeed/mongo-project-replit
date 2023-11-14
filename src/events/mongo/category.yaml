@@ -1,0 +1,88 @@
+# ONE
+http.get./mongo/category/{id}:
+  summary: Fetch Category
+  description: Fetch Category from database
+  fn: com.biz.mongo.category.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+http.post./mongo/category:
+  summary: Create a new Category
+  description: Create Category from database
+  fn: com.biz.mongo.category.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mongo/Category'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+http.put./mongo/category/{id}:
+  summary: Update a Category
+  description: Update Category from database
+  fn: com.biz.mongo.category.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mongo/Category'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+http.delete./mongo/category/{id}:
+  summary: Delete a Category
+  description: Delete Category from database
+  fn: com.biz.mongo.category.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+http.post./mongo/category/search:
+  summary: Fetch multiple Category
+  description: Fetch multiple Category from database
+  fn: com.biz.mongo.category.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

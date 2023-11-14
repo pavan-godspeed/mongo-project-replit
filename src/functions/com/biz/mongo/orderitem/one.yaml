@@ -1,0 +1,7 @@
+summary: Fetch OrderItem
+tasks:
+  - id: mongo_orderitem_one
+    fn: datasource.mongo.OrderItem.findUnique
+    args:
+      where:
+        id: <% inputs.params.id %>

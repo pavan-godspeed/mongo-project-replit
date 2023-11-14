@@ -1,0 +1,5 @@
+summary: Fetch many Owner
+tasks:
+  - id: mongo_owner_search
+    fn: datasource.mongo.Owner.findMany
+    args: {}

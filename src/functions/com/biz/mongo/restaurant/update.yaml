@@ -1,0 +1,8 @@
+summary: Update Restaurant
+tasks:
+  - id: mongo_restaurant_update
+    fn: datasource.mongo.Restaurant.update
+    args:
+      where:
+        id: <% inputs.params.id %>
+      data: <% inputs.body %>

@@ -1,0 +1,5 @@
+summary: Fetch many Restaurant
+tasks:
+  - id: mongo_restaurant_search
+    fn: datasource.mongo.Restaurant.findMany
+    args: {}

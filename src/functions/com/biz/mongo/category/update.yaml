@@ -1,0 +1,8 @@
+summary: Update Category
+tasks:
+  - id: mongo_category_update
+    fn: datasource.mongo.Category.update
+    args:
+      where:
+        id: <% inputs.params.id %>
+      data: <% inputs.body %>

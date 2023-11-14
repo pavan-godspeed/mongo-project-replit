@@ -1,0 +1,8 @@
+summary: Update OrderItem
+tasks:
+  - id: mongo_orderitem_update
+    fn: datasource.mongo.OrderItem.update
+    args:
+      where:
+        id: <% inputs.params.id %>
+      data: <% inputs.body %>

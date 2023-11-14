@@ -1,0 +1,6 @@
+summary: Create Order
+tasks:
+  - id: mongo_order_create
+    fn: datasource.mongo.Order.create
+    args:
+      data: <% inputs.body %>

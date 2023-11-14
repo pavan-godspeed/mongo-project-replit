@@ -1,0 +1,5 @@
+summary: Fetch many Category
+tasks:
+  - id: mongo_category_search
+    fn: datasource.mongo.Category.findMany
+    args: {}

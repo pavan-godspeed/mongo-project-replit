@@ -1,0 +1,6 @@
+summary: Create Owner
+tasks:
+  - id: mongo_owner_create
+    fn: datasource.mongo.Owner.create
+    args:
+      data: <% inputs.body %>

@@ -1,0 +1,7 @@
+summary: Delete MenuItems
+tasks:
+  - id: mongo_menuitems_delete
+    fn: datasource.mongo.MenuItems.delete
+    args:
+      where:
+        id: <% inputs.params.id %>
